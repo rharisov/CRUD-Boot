@@ -11,7 +11,6 @@ import web.config.SpringBoot.model.User;
 import java.util.List;
 
 @Repository
-@Transactional
 public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
@@ -21,7 +20,6 @@ public class UserDaoImpl implements UserDao {
     public List<User> getUsers() {
         return entityManager.createQuery("FROM User", User.class).getResultList();
     }
-
     @Override
     public User getUserById(long id) {
         try {
